@@ -1,8 +1,9 @@
 package view
 
 import (
-	"GUI/input"
 	"log"
+
+	"github.com/WRABZY/GUI/input"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )

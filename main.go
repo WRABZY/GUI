@@ -1,9 +1,10 @@
 package main
 
 import (
-	"GUI/view"
 	"log"
 	"os"
+
+	"github.com/WRABZY/GUI/view"
 
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )

@@ -1,4 +1,4 @@
-module GUI
+module github.com/WRABZY/GUI
 
 go 1.24.2
 
