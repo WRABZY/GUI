@@ -1,9 +1,7 @@
-package view
+package gui
 
 import (
 	"log"
-
-	"github.com/WRABZY/GUI/input"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -13,9 +11,9 @@ type form struct {
 	Fullscreen      bool
 	Width, Heigth   int
 	elements        map[int]view
-	clickableBounds map[input.ClickableBound]int // TODO: 2'slice with sort, fast search
+	clickableBounds map[ClickableBound]int // TODO: 2'slice with sort, fast search
 
-	mouseState *input.MouseState
+	mouseState *MouseState
 
 	drawImageOptions *ebiten.DrawImageOptions
 }
@@ -26,8 +24,8 @@ func NewForm(name string) *form {
 		Width:            100,
 		Heigth:           100,
 		elements:         make(map[int]view),
-		clickableBounds:  make(map[input.ClickableBound]int),
-		mouseState:       &input.MouseState{},
+		clickableBounds:  make(map[ClickableBound]int),
+		mouseState:       &MouseState{},
 		drawImageOptions: &ebiten.DrawImageOptions{},
 	}
 }
@@ -48,7 +46,7 @@ func (f *form) Open() {
 func (f *form) AddView(v view) {
 	f.elements[v.id()] = v
 	x0, y0 := v.coordinates()
-	f.clickableBounds[input.ClickableBound{
+	f.clickableBounds[ClickableBound{
 		X0: int(x0),
 		Y0: int(y0),
 		X1: int(x0) + v.image().Bounds().Dx(),
@@ -83,7 +81,7 @@ func (f *form) Update() error {
 		x, y := ebiten.CursorPosition()
 		for bound, id := range f.clickableBounds {
 			if x >= bound.X0 && x < bound.X1 && y >= bound.Y0 && y < bound.Y1 {
-				clickable, ok := f.elements[id].(input.Clickable)
+				clickable, ok := f.elements[id].(Clickable)
 				if ok {
 					go clickable.Click()
 				}
