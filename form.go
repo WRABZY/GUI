@@ -20,6 +20,7 @@ type form struct {
 
 func NewForm(name string) *form {
 	return &form{
+		Name:             name,
 		Fullscreen:       false,
 		Width:            100,
 		Heigth:           100,
