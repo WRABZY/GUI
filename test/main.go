@@ -11,7 +11,7 @@ import (
 
 func main() {
 	var f = gui.NewForm("WRABZY/GUI demo")
-	f.Width = 300
+	f.Width = 400
 	f.Heigth = 200
 
 	ivImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/100x200.png")
@@ -41,5 +41,25 @@ func main() {
 	)
 	f.AddView(iv2)
 
-	f.Open()
+	avImg, _, err := ebitenutil.NewImageFromFile("test/test_assets/a100x200.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	var avSpriteSheetId = gui.AddAnimationSpriteSheet(avImg, 0, 0, 100, 200, 30)
+	var avAnimatiion = gui.NewAnimation(avSpriteSheetId, 30).WithTimes(1000 / 60)
+	var av = gui.NewAnimationView()
+	av.SetAnimation(avAnimatiion)
+	av.SetPosition(300, 0)
+	av.SetOnClickListener(
+		func() {
+			if avAnimatiion.IsRunning() {
+				avAnimatiion.Pause()
+			} else {
+				avAnimatiion.Resume()
+			}
+		},
+	)
+	f.AddView(av)
+
+	f.OpenWithExecute(avAnimatiion.Start)
 }

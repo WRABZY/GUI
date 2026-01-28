@@ -30,6 +30,12 @@ func NewForm(name string) *form {
 	}
 }
 
+func (f *form) OpenWithExecute(fun func()) {
+	go fun()
+
+	f.Open()
+}
+
 func (f *form) Open() {
 	ebiten.SetWindowTitle(f.Name)
 	if f.Fullscreen {
