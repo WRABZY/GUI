@@ -12,7 +12,7 @@ import (
 func main() {
 	var f = gui.NewForm("WRABZY/GUI demo")
 	f.Width = 400
-	f.Heigth = 200
+	f.Heigth = 300
 
 	ivImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/100x200.png")
 	if err != nil {
@@ -60,6 +60,10 @@ func main() {
 		},
 	)
 	f.AddView(av)
+
+	var tv = gui.NewTextView("github.com/WRABZY/gui")
+	tv.SetPosition(0, 200)
+	f.AddView(tv)
 
 	f.OpenWithExecute(avAnimatiion.Start)
 }
