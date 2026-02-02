@@ -4,15 +4,15 @@ go 1.24.2
 
 require (
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
-	github.com/hajimehoshi/ebiten/v2 v2.9.7
+	github.com/hajimehoshi/ebiten/v2 v2.9.8
 	golang.org/x/image v0.31.0
 )
 
 require (
 	github.com/ebitengine/gomobile v0.0.0-20250923094054-ea854a63cce1 // indirect
 	github.com/ebitengine/hideconsole v1.0.0 // indirect
-	github.com/ebitengine/purego v0.9.0 // indirect
-	github.com/go-text/typesetting v0.3.0 // indirect
+	github.com/ebitengine/purego v0.9.1 // indirect
+	github.com/go-text/typesetting v0.3.3 // indirect
 	github.com/jezek/xgb v1.1.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	golang.org/x/sync v0.17.0 // indirect

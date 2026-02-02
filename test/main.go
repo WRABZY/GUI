@@ -46,16 +46,16 @@ func main() {
 		log.Fatal(err)
 	}
 	var avSpriteSheetId = gui.AddAnimationSpriteSheet(avImg, 0, 0, 100, 200, 30)
-	var avAnimatiion = gui.NewAnimation(avSpriteSheetId, 30).WithTimes(1000 / 60)
+	var avAnimation = gui.NewAnimation(avSpriteSheetId, 30).WithTimes(1000 / 60)
 	var av = gui.NewAnimationView()
-	av.SetAnimation(avAnimatiion)
+	av.SetAnimation(avAnimation)
 	av.SetPosition(300, 0)
 	av.SetOnClickListener(
 		func() {
-			if avAnimatiion.IsRunning() {
-				avAnimatiion.Pause()
+			if avAnimation.IsRunning() {
+				avAnimation.Pause()
 			} else {
-				avAnimatiion.Resume()
+				avAnimation.Resume()
 			}
 		},
 	)
@@ -65,5 +65,5 @@ func main() {
 	tv.SetPosition(0, 200)
 	f.AddView(tv)
 
-	f.OpenWithExecute(avAnimatiion.Start)
+	f.OpenWithExecute(avAnimation.Start)
 }
