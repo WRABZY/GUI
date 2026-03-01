@@ -1,6 +1,7 @@
 package gui
 
 import (
+	"image"
 	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -10,6 +11,7 @@ type form struct {
 	Name            string
 	Fullscreen      bool
 	Width, Heigth   int
+	icons           []image.Image
 	elements        map[int]view
 	clickableBounds map[ClickableBound]int // TODO: 2'slice with sort, fast search
 
@@ -31,6 +33,10 @@ func NewForm(name string) *form {
 	}
 }
 
+func (f *form) SetIcons(icons ...image.Image) {
+	f.icons = icons
+}
+
 func (f *form) OpenWithExecute(fun func()) {
 	go fun()
 
@@ -39,6 +45,10 @@ func (f *form) OpenWithExecute(fun func()) {
 
 func (f *form) Open() {
 	ebiten.SetWindowTitle(f.Name)
+	if len(f.icons) > 0 {
+		ebiten.SetWindowIcon(f.icons)
+	}
+
 	if f.Fullscreen {
 		ebiten.SetFullscreen(true)
 	} else {
