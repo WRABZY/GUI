@@ -11,22 +11,22 @@ import (
 
 func main() {
 	var f = gui.NewForm("CALCULATOR")
-	icon16, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon16.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	icon32, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon32.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	icon48, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon48.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	f.SetIcons(icon16, icon32, icon48)
+	//icon16, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon16.png")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//icon32, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon32.png")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//icon48, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon48.png")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//f.SetIcons(icon16, icon32, icon48)
 
 	f.Width = 400
-	f.Heigth = 300
+	f.Height = 300
 
 	ivImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/100x200.png")
 	if err != nil {

@@ -10,8 +10,9 @@ import (
 type form struct {
 	Name            string
 	Fullscreen      bool
-	Width, Heigth   int
+	Width, Height   int
 	icons           []image.Image
+	layout          layout
 	elements        map[int]view
 	clickableBounds map[ClickableBound]int // TODO: 2'slice with sort, fast search
 
@@ -25,7 +26,7 @@ func NewForm(name string) *form {
 		Name:             name,
 		Fullscreen:       false,
 		Width:            100,
-		Heigth:           100,
+		Height:           100,
 		elements:         make(map[int]view),
 		clickableBounds:  make(map[ClickableBound]int),
 		mouseState:       &MouseState{},
@@ -52,7 +53,7 @@ func (f *form) Open() {
 	if f.Fullscreen {
 		ebiten.SetFullscreen(true)
 	} else {
-		ebiten.SetWindowSize(f.Width, f.Heigth)
+		ebiten.SetWindowSize(f.Width, f.Height)
 	}
 
 	if err := ebiten.RunGame(f); err != nil {
@@ -89,7 +90,7 @@ func (f *form) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 	if f.Fullscreen {
 		return ebiten.Monitor().Size()
 	}
-	return f.Width, f.Heigth
+	return f.Width, f.Height
 }
 
 func (f *form) Update() error {
