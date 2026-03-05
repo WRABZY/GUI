@@ -25,8 +25,14 @@ func main() {
 	//}
 	//f.SetIcons(icon16, icon32, icon48)
 
-	f.Width = 400
-	f.Height = 300
+	rootLayout := gui.NewVerticalLayout()
+	f.SetLayout(rootLayout)
+
+	systemLayout := gui.NewHorizontalLayout()
+	otherLayout := gui.NewHorizontalLayout()
+
+	rootLayout.AddLayout(systemLayout)
+	rootLayout.AddLayout(otherLayout)
 
 	ivImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/100x200.png")
 	if err != nil {
@@ -39,7 +45,8 @@ func main() {
 			f.SwitchFullscreen()
 		},
 	)
-	f.AddView(iv)
+	systemLayout.AddView(iv)
+	systemLayout.AddView(iv)
 
 	iv2Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/200x200.png")
 	if err != nil {
@@ -47,13 +54,12 @@ func main() {
 	}
 	var iv2 = gui.NewImageView()
 	iv2.SetImage(iv2Image)
-	iv2.SetPosition(100, 0)
 	iv2.SetOnClickListener(
 		func() {
 			os.Exit(0)
 		},
 	)
-	f.AddView(iv2)
+	otherLayout.AddView(iv2)
 
 	avImg, _, err := ebitenutil.NewImageFromFile("test/test_assets/a100x200.png")
 	if err != nil {
@@ -63,7 +69,6 @@ func main() {
 	var avAnimation = gui.NewAnimation(avSpriteSheetId, 30).WithTimes(1000 / 60)
 	var av = gui.NewAnimationView()
 	av.SetAnimation(avAnimation)
-	av.SetPosition(300, 0)
 	av.SetOnClickListener(
 		func() {
 			if avAnimation.IsRunning() {
@@ -73,11 +78,10 @@ func main() {
 			}
 		},
 	)
-	f.AddView(av)
+	otherLayout.AddView(av)
 
 	var tv = gui.NewTextView("github.com/WRABZY/gui")
-	tv.SetPosition(0, 200)
-	f.AddView(tv)
+	otherLayout.AddView(tv)
 
 	f.OpenWithExecute(avAnimation.Start)
 }

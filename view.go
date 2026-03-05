@@ -18,4 +18,5 @@ type view interface {
 	id() int
 	image() *ebiten.Image
 	coordinates() (float64, float64)
+	setPosition(x, y int)
 }

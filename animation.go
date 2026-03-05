@@ -21,11 +21,6 @@ func NewAnimationView() *animationView {
 	return &animationView{identifier: assignID()}
 }
 
-func (av *animationView) SetPosition(x, y int) {
-	av.x = float64(x)
-	av.y = float64(y)
-}
-
 func (av *animationView) SetAnimation(animation *Animation) {
 	av.anim = animation
 }
@@ -50,6 +45,11 @@ func (av *animationView) image() *ebiten.Image {
 
 func (av *animationView) coordinates() (float64, float64) {
 	return av.x, av.y
+}
+
+func (av *animationView) setPosition(x, y int) {
+	av.x = float64(x)
+	av.y = float64(y)
 }
 
 // ---------------------------------------------------

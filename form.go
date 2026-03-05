@@ -12,7 +12,7 @@ type form struct {
 	Fullscreen      bool
 	Width, Height   int
 	icons           []image.Image
-	layout          layout
+	layout          *layout
 	elements        map[int]view
 	clickableBounds map[ClickableBound]int // TODO: 2'slice with sort, fast search
 
@@ -25,8 +25,6 @@ func NewForm(name string) *form {
 	return &form{
 		Name:             name,
 		Fullscreen:       false,
-		Width:            100,
-		Height:           100,
 		elements:         make(map[int]view),
 		clickableBounds:  make(map[ClickableBound]int),
 		mouseState:       &MouseState{},
@@ -53,6 +51,10 @@ func (f *form) Open() {
 	if f.Fullscreen {
 		ebiten.SetFullscreen(true)
 	} else {
+		if f.layout != nil {
+			f.Width, f.Height = f.layout.SizeOfContent()
+			f.DistributeViewsByLayout()
+		}
 		ebiten.SetWindowSize(f.Width, f.Height)
 	}
 
@@ -61,15 +63,32 @@ func (f *form) Open() {
 	}
 }
 
-func (f *form) AddView(v view) {
-	f.elements[v.id()] = v
-	x0, y0 := v.coordinates()
-	f.clickableBounds[ClickableBound{
-		X0: int(x0),
-		Y0: int(y0),
-		X1: int(x0) + v.image().Bounds().Dx(),
-		Y1: int(y0) + v.image().Bounds().Dy(),
-	}] = v.id()
+func (f *form) SetLayout(l *layout) {
+	f.layout = l
+}
+
+func (f *form) DistributeViewsByLayout() {
+	if f.layout == nil {
+		return
+	}
+
+	for {
+		elem, last := f.layout.ThroughLayout()
+		if elem != nil {
+			f.elements[elem.id()] = elem
+			x0, y0 := elem.coordinates()
+			f.clickableBounds[ClickableBound{
+				X0: int(x0),
+				Y0: int(y0),
+				X1: int(x0) + elem.image().Bounds().Dx(),
+				Y1: int(y0) + elem.image().Bounds().Dy(),
+			}] = elem.id()
+		}
+		if last {
+			return
+		}
+	}
+
 }
 
 func (f *form) SwitchFullscreen() {

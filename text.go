@@ -51,11 +51,6 @@ func NewTextView(text string) *textView {
 	}
 }
 
-func (tv *textView) SetPosition(x, y int) {
-	tv.x = float64(x)
-	tv.y = float64(y)
-}
-
 func (tv *textView) SetText(text string) {
 	tv.text = text
 }
@@ -84,4 +79,9 @@ func (tv *textView) image() *ebiten.Image {
 
 func (tv *textView) coordinates() (float64, float64) {
 	return tv.x, tv.y
+}
+
+func (tv *textView) setPosition(x, y int) {
+	tv.x = float64(x)
+	tv.y = float64(y)
 }
