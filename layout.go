@@ -12,11 +12,11 @@ type layout struct {
 }
 
 func NewVerticalLayout() *layout {
-	return &layout{vertical: true, throughElementIndex: -1, throughLayoutIndex: -1}
+	return &layout{vertical: true}
 }
 
 func NewHorizontalLayout() *layout {
-	return &layout{vertical: true, throughElementIndex: -1, throughLayoutIndex: -1}
+	return &layout{vertical: false}
 }
 
 func (l *layout) AddLayout(nl *layout) {
@@ -74,42 +74,54 @@ func (l *layout) SizeOfContent() (width, height int) {
 
 func (l *layout) ThroughLayout() (element view, last bool) {
 	if len(l.elements) > 0 {
-		if l.throughElementIndex < len(l.elements)-1 {
-			l.throughElementIndex++
-		} else {
-			l.throughElementIndex = 0
-		}
+		element = l.elements[l.throughElementIndex]
 		l.throughX += l.throughXDelta
 		l.throughY += l.throughYDelta
-		l.elements[l.throughElementIndex].setPosition(l.throughX, l.throughY)
-		if l.vertical {
-			l.throughYDelta = l.elements[l.throughElementIndex].image().Bounds().Dy()
+		element.setPosition(l.throughX, l.throughY)
+
+		l.throughElementIndex++
+		if l.throughElementIndex == len(l.elements) {
+			l.throughX = 0
+			l.throughY = 0
+			l.throughXDelta = 0
+			l.throughYDelta = 0
+			l.throughElementIndex = 0
+			last = true
+		} else if l.vertical {
+			l.throughYDelta = element.image().Bounds().Dy()
 		} else {
-			l.throughXDelta = l.elements[l.throughElementIndex].image().Bounds().Dx()
+			l.throughXDelta = element.image().Bounds().Dx()
 		}
-		return l.elements[l.throughElementIndex], l.throughElementIndex == len(l.elements)-1
+		return
 	}
 
-	// TODO MOVEMENT THROUGH LAYOUT
-	/*
-		if len(l.layouts) > 0 {
-			if l.throughLayoutIndex < len(l.layouts)-1 {
-				l.throughLayoutIndex++
-				element, _ = l.layouts[l.throughLayoutIndex].ThroughLayout()
-				l.throughX += l.throughXDelta
-				l.throughY += l.throughYDelta
-				element.setPosition(l.throughX, l.throughY)
-				if l.vertical {
-					l.throughYDelta = l.elements[l.throughElementIndex].image().Bounds().Dy()
-				} else {
-					l.throughXDelta = l.elements[l.throughElementIndex].image().Bounds().Dx()
-				}
-				last = !(l.throughLayoutIndex < len(l.layouts)-1)
-				return
-			}
+	if len(l.layouts) > 0 {
+		layout := l.layouts[l.throughLayoutIndex]
+		element, last = layout.ThroughLayout()
+		if element == nil {
+			return nil, true
+		}
+		elemX, elemY := element.coordinates()
+		element.setPosition(int(elemX)+l.throughX, int(elemY)+l.throughY)
 
-			l.throughLayoutIndex = -1
-		}*/
+		if last {
+			l.throughLayoutIndex++
+
+			if l.throughLayoutIndex == len(l.layouts) {
+				l.throughXDelta = 0
+				l.throughYDelta = 0
+				l.throughLayoutIndex = 0
+			} else {
+				if l.vertical {
+					l.throughY += layout.height
+				} else {
+					l.throughX += layout.width
+				}
+				last = false
+			}
+		}
+		return
+	}
 
 	return nil, true
 }
