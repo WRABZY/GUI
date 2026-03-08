@@ -2,9 +2,11 @@ package gui
 
 import (
 	"image"
+	"io"
 	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/audio"
 )
 
 type form struct {
@@ -24,9 +26,14 @@ type form struct {
 	mouseState *MouseState
 
 	drawImageOptions *ebiten.DrawImageOptions
+
+	// TODO: optimize audio
+	audioContext *audio.Context
+	audioPlayer  *audio.Player
 }
 
 func NewForm(name string) *form {
+
 	return &form{
 		Name:             name,
 		Fullscreen:       false,
@@ -106,6 +113,26 @@ func (f *form) DistributeViewsByLayout() {
 func (f *form) SwitchFullscreen() {
 	f.Fullscreen = !f.Fullscreen
 	ebiten.SetFullscreen(f.Fullscreen)
+}
+
+// TODO: optimize audio
+func (f *form) AddSound(sound io.Reader) {
+	f.audioContext = audio.NewContext(48000)
+	audioPlayer, err := f.audioContext.NewPlayerF32(sound)
+	if err != nil {
+		panic(err)
+	}
+	f.audioPlayer = audioPlayer
+}
+
+func (f *form) PlaySound() {
+	// As audioPlayer has one stream and remembers the playing position,
+	// rewinding is needed before playing when reusing audioPlayer.
+	if err := f.audioPlayer.Rewind(); err != nil {
+		log.Println(err)
+		return
+	}
+	f.audioPlayer.Play()
 }
 
 func (f *form) Draw(screen *ebiten.Image) {

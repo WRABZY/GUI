@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/hajimehoshi/ebiten/v2/audio/wav"
 	"github.com/wrabzy/gui"
 
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
@@ -432,24 +433,21 @@ func main() {
 		calculator.AppendNine()
 	})
 
+	file, err := os.Open("example/calculator/assets/select.wav")
+	if err != nil {
+		panic(err)
+	}
+	sound, err := wav.DecodeF32(file)
+	f.AddSound(sound)
+
 	buttonsRow3B7.SetOnHoverListener(func() {
-		log.Println("hover: 7")
+		f.PlaySound()
 	})
 	buttonsRow3B8.SetOnHoverListener(func() {
-		log.Println("hover: 8")
+		f.PlaySound()
 	})
 	buttonsRow3B9.SetOnHoverListener(func() {
-		log.Println("hover: 9")
-	})
-
-	buttonsRow3B7.SetOnHoverOffListener(func() {
-		log.Println("hover off: 7")
-	})
-	buttonsRow3B8.SetOnHoverOffListener(func() {
-		log.Println("hover off: 8")
-	})
-	buttonsRow3B9.SetOnHoverOffListener(func() {
-		log.Println("hover off: 9")
+		f.PlaySound()
 	})
 
 	b4Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/4.png")
@@ -501,6 +499,16 @@ func main() {
 		calculator.AppendSix()
 	})
 
+	buttonsRow4B4.SetOnHoverListener(func() {
+		f.PlaySound()
+	})
+	buttonsRow4B5.SetOnHoverListener(func() {
+		f.PlaySound()
+	})
+	buttonsRow4B6.SetOnHoverListener(func() {
+		f.PlaySound()
+	})
+
 	b1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/1.png")
 	if err != nil {
 		log.Fatal(err)
@@ -548,6 +556,16 @@ func main() {
 	})
 	buttonsRow5B3.SetOnClickListener(func() {
 		calculator.AppendThree()
+	})
+
+	buttonsRow5B1.SetOnHoverListener(func() {
+		f.PlaySound()
+	})
+	buttonsRow5B2.SetOnHoverListener(func() {
+		f.PlaySound()
+	})
+	buttonsRow5B3.SetOnHoverListener(func() {
+		f.PlaySound()
 	})
 
 	unaryMinusImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/unary_minus.png")
