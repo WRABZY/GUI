@@ -10,44 +10,44 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-type animationView struct {
+type AnimationView struct {
 	identifier int
 	anim       *Animation
 	x, y       float64
 	onClick    func()
 }
 
-func NewAnimationView() *animationView {
-	return &animationView{identifier: assignID()}
+func NewAnimationView() *AnimationView {
+	return &AnimationView{identifier: assignID()}
 }
 
-func (av *animationView) SetAnimation(animation *Animation) {
+func (av *AnimationView) SetAnimation(animation *Animation) {
 	av.anim = animation
 }
 
-func (av *animationView) SetOnClickListener(onClick func()) {
+func (av *AnimationView) SetOnClickListener(onClick func()) {
 	av.onClick = onClick
 }
 
-func (av *animationView) Click() {
+func (av *AnimationView) Click() {
 	if av.onClick != nil {
 		av.onClick()
 	}
 }
 
-func (av *animationView) id() int {
+func (av *AnimationView) id() int {
 	return av.identifier
 }
 
-func (av *animationView) image() *ebiten.Image {
+func (av *AnimationView) image() *ebiten.Image {
 	return av.anim.Frame()
 }
 
-func (av *animationView) coordinates() (float64, float64) {
+func (av *AnimationView) coordinates() (float64, float64) {
 	return av.x, av.y
 }
 
-func (av *animationView) setPosition(x, y int) {
+func (av *AnimationView) setPosition(x, y int) {
 	av.x = float64(x)
 	av.y = float64(y)
 }

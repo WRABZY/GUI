@@ -11,15 +11,15 @@ import (
 
 func main() {
 	var f = gui.NewForm("CALCULATOR")
-	//icon16, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon16.png")
+	//icon16, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/icons/icon16.png")
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
-	//icon32, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon32.png")
+	//icon32, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/icons/icon32.png")
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
-	//icon48, _, err := ebitenutil.NewImageFromFile("test/test_assets/icons/icon48.png")
+	//icon48, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/icons/icon48.png")
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
@@ -50,7 +50,7 @@ func main() {
 	rootLayout.AddLayout(buttonsRow6Layout)
 	rootLayout.AddLayout(botBorderLayout)
 
-	horizontalBorderImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/border_horizontal.png")
+	horizontalBorderImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/border_horizontal.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -58,19 +58,19 @@ func main() {
 	topHBorder.SetImage(horizontalBorderImage)
 	topBorderLayout.AddView(topHBorder)
 
-	displayVerticalBorderImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/border_vertical_display.png")
+	displayVerticalBorderImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/border_vertical_display.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	displayDigitFiller, _, err := ebitenutil.NewImageFromFile("test/test_assets/display_digit_start_end_filler.png")
+	displayDigitFiller, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_filler.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	displayEmptyDigitImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/display_digit_empty.png")
+	displayEmptyDigitImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_empty.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	displayEmptyDotImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/display_dot_empty.png")
+	displayEmptyDotImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_dot_empty.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -95,7 +95,7 @@ func main() {
 	var displayDigitView8 = gui.NewImageView()
 	var displayDot8 = gui.NewImageView()
 	var displayDigitView9 = gui.NewImageView()
-	var displayDigitFillerEnd = gui.NewImageView()
+	var displayDot9 = gui.NewImageView()
 	var displayVerticalBorderRight = gui.NewImageView()
 	displayVerticalBorderLeft.SetImage(displayVerticalBorderImage)
 	displayDigitFillerStart.SetImage(displayDigitFiller)
@@ -118,7 +118,7 @@ func main() {
 	displayDigitView8.SetImage(displayEmptyDigitImage)
 	displayDot8.SetImage(displayEmptyDotImage)
 	displayDigitView9.SetImage(displayEmptyDigitImage)
-	displayDigitFillerEnd.SetImage(displayDigitFiller)
+	displayDot9.SetImage(displayEmptyDotImage)
 	displayVerticalBorderRight.SetImage(displayVerticalBorderImage)
 	displayLayout.AddView(displayVerticalBorderLeft)
 	displayLayout.AddView(displayDigitFillerStart)
@@ -141,42 +141,149 @@ func main() {
 	displayLayout.AddView(displayDigitView8)
 	displayLayout.AddView(displayDot8)
 	displayLayout.AddView(displayDigitView9)
-	displayLayout.AddView(displayDigitFillerEnd)
+	displayLayout.AddView(displayDot9)
 	displayLayout.AddView(displayVerticalBorderRight)
+
+	calculator.SetDisplayDigits(
+		displayDigitView0,
+		displayDigitView1,
+		displayDigitView2,
+		displayDigitView3,
+		displayDigitView4,
+		displayDigitView5,
+		displayDigitView6,
+		displayDigitView7,
+		displayDigitView8,
+		displayDigitView9,
+	)
+
+	calculator.SetDisplayDots(
+		displayDot0,
+		displayDot1,
+		displayDot2,
+		displayDot3,
+		displayDot4,
+		displayDot5,
+		displayDot6,
+		displayDot7,
+		displayDot8,
+		displayDot9,
+	)
+
+	displayDigit0Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_0.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_1.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_2.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit3Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_3.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit4Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_4.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit5Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_5.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit6Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_6.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit7Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_7.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit8Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_8.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigit9Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_9.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigitDotImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_dot.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigitEImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_e.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigitRImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_r.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayDigitOImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_o.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+	displayMinusImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_minus.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	calculator.SetDisplayImages(
+		displayDigit0Image,
+		displayDigit1Image,
+		displayDigit2Image,
+		displayDigit3Image,
+		displayDigit4Image,
+		displayDigit5Image,
+		displayDigit6Image,
+		displayDigit7Image,
+		displayDigit8Image,
+		displayDigit9Image,
+		displayDigitDotImage,
+		displayDigitEImage,
+		displayDigitRImage,
+		displayDigitOImage,
+		displayMinusImage,
+		displayEmptyDigitImage,
+		displayEmptyDotImage,
+	)
 
 	var displayHBorder = gui.NewImageView()
 	displayHBorder.SetImage(horizontalBorderImage)
 	displayBorderLayout.AddView(displayHBorder)
 
-	verticalBorderImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/border_vertical.png")
+	verticalBorderImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/border_vertical.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	l1Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/op_l1.png")
+	l1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/op_l1.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	upImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/up.png")
+	upImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/up.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	r1Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/op_r1.png")
+	r1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/op_r1.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	emptyImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/empty.png")
+	emptyImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/empty.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	l2Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/l2.png")
+	l2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/l2.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	yImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/y.png")
+	yImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/y.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	r2Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/r2.png")
+	r2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/r2.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -218,23 +325,23 @@ func main() {
 		},
 	)
 
-	leftImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/left.png")
+	leftImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/left.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	centerImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/center.png")
+	centerImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/center.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	rightImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/right.png")
+	rightImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/right.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	xImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/x.png")
+	xImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/x.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	bImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/b.png")
+	bImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/b.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -265,24 +372,26 @@ func main() {
 	buttonsRow2Layout.AddView(buttonsRow2Empty2)
 	buttonsRow2Layout.AddView(buttonsRow2B)
 	buttonsRow2Layout.AddView(buttonsRow2VerticalBorderRight)
+	buttonsRow2X.SetOnClickListener(calculator.ClearOnePosition)
+	buttonsRow2B.SetOnClickListener(calculator.Clear)
 
-	botImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/bot.png")
+	botImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/bot.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b7Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/7.png")
+	b7Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/7.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b8Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/8.png")
+	b8Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/8.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b9Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/9.png")
+	b9Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/9.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	aImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/a.png")
+	aImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/a.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -313,16 +422,25 @@ func main() {
 	buttonsRow3Layout.AddView(buttonsRow3A)
 	buttonsRow3Layout.AddView(buttonsRow3Empty2)
 	buttonsRow3Layout.AddView(buttonsRow3VerticalBorderRight)
+	buttonsRow3B7.SetOnClickListener(func() {
+		calculator.AppendSeven()
+	})
+	buttonsRow3B8.SetOnClickListener(func() {
+		calculator.AppendEight()
+	})
+	buttonsRow3B9.SetOnClickListener(func() {
+		calculator.AppendNine()
+	})
 
-	b4Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/4.png")
+	b4Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/4.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b5Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/5.png")
+	b5Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/5.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b6Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/6.png")
+	b6Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/6.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -353,16 +471,25 @@ func main() {
 	buttonsRow4Layout.AddView(buttonsRow4Empty3)
 	buttonsRow4Layout.AddView(buttonsRow4Empty4)
 	buttonsRow4Layout.AddView(buttonsRow4VerticalBorderRight)
+	buttonsRow4B4.SetOnClickListener(func() {
+		calculator.AppendFour()
+	})
+	buttonsRow4B5.SetOnClickListener(func() {
+		calculator.AppendFive()
+	})
+	buttonsRow4B6.SetOnClickListener(func() {
+		calculator.AppendSix()
+	})
 
-	b1Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/1.png")
+	b1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/1.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b2Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/2.png")
+	b2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/2.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b3Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/3.png")
+	b3Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/3.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -393,16 +520,25 @@ func main() {
 	buttonsRow5Layout.AddView(buttonsRow5Empty3)
 	buttonsRow5Layout.AddView(buttonsRow5Empty4)
 	buttonsRow5Layout.AddView(buttonsRow5VerticalBorderRight)
+	buttonsRow5B1.SetOnClickListener(func() {
+		calculator.AppendOne()
+	})
+	buttonsRow5B2.SetOnClickListener(func() {
+		calculator.AppendTwo()
+	})
+	buttonsRow5B3.SetOnClickListener(func() {
+		calculator.AppendThree()
+	})
 
-	unaryMinusImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/unary_minus.png")
+	unaryMinusImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/unary_minus.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	b0Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/0.png")
+	b0Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/0.png")
 	if err != nil {
 		log.Fatal(err)
 	}
-	dotImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/dot.png")
+	dotImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/dot.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -433,27 +569,30 @@ func main() {
 	buttonsRow6Layout.AddView(buttonsRow6Empty3)
 	buttonsRow6Layout.AddView(buttonsRow6Empty4)
 	buttonsRow6Layout.AddView(buttonsRow6VerticalBorderRight)
+	buttonsRow6UnaryMinus.SetOnClickListener(calculator.SwitchSign)
+	buttonsRow6B0.SetOnClickListener(calculator.AppendZero)
+	buttonsRow6Bdot.SetOnClickListener(calculator.AppendDot)
 
 	var botHBorder = gui.NewImageView()
 	botHBorder.SetImage(horizontalBorderImage)
 	botBorderLayout.AddView(botHBorder)
 
 	/*
-		ivImage, _, err := ebitenutil.NewImageFromFile("test/test_assets/48x48.png")
+		ivImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/48x48.png")
 		if err != nil {
 			log.Fatal(err)
 		}
 		var iv = gui.NewImageView()
 		iv.SetImage(ivImage)
 
-		iv2Image, _, err := ebitenutil.NewImageFromFile("test/test_assets/200x200.png")
+		iv2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/200x200.png")
 		if err != nil {
 			log.Fatal(err)
 		}
 		var iv2 = gui.NewImageView()
 		iv2.SetImage(iv2Image)
 
-		avImg, _, err := ebitenutil.NewImageFromFile("test/test_assets/a100x200.png")
+		avImg, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/a100x200.png")
 		if err != nil {
 			log.Fatal(err)
 		}

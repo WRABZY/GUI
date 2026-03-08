@@ -12,7 +12,7 @@ import (
 	ebitenText "github.com/hajimehoshi/ebiten/v2/text/v2"
 )
 
-type textView struct {
+type TextView struct {
 	identifier int
 	text       string
 	textColor  color.Color
@@ -23,7 +23,7 @@ type textView struct {
 	onClick    func()
 }
 
-func NewTextView(text string) *textView {
+func NewTextView(text string) *TextView {
 	defaultBackgroundColor := color.White
 	defaultTextColor := color.Black
 	defaultTextSize := 14.0
@@ -41,7 +41,7 @@ func NewTextView(text string) *textView {
 	textOptions := &ebitenText.DrawOptions{}
 	textOptions.ColorScale.ScaleWithColor(defaultTextColor)
 	ebitenText.Draw(defaultImage, text, faceToDraw, textOptions)
-	return &textView{
+	return &TextView{
 		identifier: assignID(),
 		text:       text,
 		textColor:  defaultTextColor,
@@ -51,37 +51,37 @@ func NewTextView(text string) *textView {
 	}
 }
 
-func (tv *textView) SetText(text string) {
+func (tv *TextView) SetText(text string) {
 	tv.text = text
 }
 
-func (tv *textView) SetBackground(image *ebiten.Image) {
+func (tv *TextView) SetBackground(image *ebiten.Image) {
 	// TODO
 }
 
-func (tv *textView) SetOnClickListener(onClick func()) {
+func (tv *TextView) SetOnClickListener(onClick func()) {
 	tv.onClick = onClick
 }
 
-func (tv *textView) Click() {
+func (tv *TextView) Click() {
 	if tv.onClick != nil {
 		tv.onClick()
 	}
 }
 
-func (tv *textView) id() int {
+func (tv *TextView) id() int {
 	return tv.identifier
 }
 
-func (tv *textView) image() *ebiten.Image {
+func (tv *TextView) image() *ebiten.Image {
 	return tv.img
 }
 
-func (tv *textView) coordinates() (float64, float64) {
+func (tv *TextView) coordinates() (float64, float64) {
 	return tv.x, tv.y
 }
 
-func (tv *textView) setPosition(x, y int) {
+func (tv *TextView) setPosition(x, y int) {
 	tv.x = float64(x)
 	tv.y = float64(y)
 }
