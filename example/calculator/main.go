@@ -432,6 +432,26 @@ func main() {
 		calculator.AppendNine()
 	})
 
+	buttonsRow3B7.SetOnHoverListener(func() {
+		log.Println("hover: 7")
+	})
+	buttonsRow3B8.SetOnHoverListener(func() {
+		log.Println("hover: 8")
+	})
+	buttonsRow3B9.SetOnHoverListener(func() {
+		log.Println("hover: 9")
+	})
+
+	buttonsRow3B7.SetOnHoverOffListener(func() {
+		log.Println("hover off: 7")
+	})
+	buttonsRow3B8.SetOnHoverOffListener(func() {
+		log.Println("hover off: 8")
+	})
+	buttonsRow3B9.SetOnHoverOffListener(func() {
+		log.Println("hover off: 9")
+	})
+
 	b4Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/4.png")
 	if err != nil {
 		log.Fatal(err)

@@ -38,3 +38,13 @@ func (ms *MouseState) Release() {
 
 	ms.pressed = false
 }
+
+type Hoverable interface {
+	SetOnHoverListener(func())
+	SetOnHoverOffListener(func())
+	Hover()
+	HoverOff()
+}
+type HoverableBound struct {
+	X0, Y0, X1, Y1 int
+}

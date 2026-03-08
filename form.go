@@ -15,6 +15,11 @@ type form struct {
 	layout          *layout
 	elements        map[int]view
 	clickableBounds map[ClickableBound]int // TODO: 2'slice with sort, fast search
+	hoverableBounds map[HoverableBound]int // TODO: 2'slice with sort, fast search
+	hoverID         int
+	hoverWas        bool
+	hoverOffID      int
+	hoverOffWas     bool
 
 	mouseState *MouseState
 
@@ -27,6 +32,7 @@ func NewForm(name string) *form {
 		Fullscreen:       false,
 		elements:         make(map[int]view),
 		clickableBounds:  make(map[ClickableBound]int),
+		hoverableBounds:  make(map[HoverableBound]int),
 		mouseState:       &MouseState{},
 		drawImageOptions: &ebiten.DrawImageOptions{},
 	}
@@ -83,6 +89,12 @@ func (f *form) DistributeViewsByLayout() {
 				X1: int(x0) + elem.image().Bounds().Dx(),
 				Y1: int(y0) + elem.image().Bounds().Dy(),
 			}] = elem.id()
+			f.hoverableBounds[HoverableBound{
+				X0: int(x0),
+				Y0: int(y0),
+				X1: int(x0) + elem.image().Bounds().Dx(),
+				Y1: int(y0) + elem.image().Bounds().Dy(),
+			}] = elem.id()
 		}
 		if last {
 			return
@@ -126,6 +138,34 @@ func (f *form) Update() error {
 		}
 	} else if !ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) && f.mouseState.Pressed() {
 		f.mouseState.Release()
+	} else {
+		x, y := ebiten.CursorPosition()
+		for bound, id := range f.hoverableBounds {
+			if x >= bound.X0 && x < bound.X1 && y >= bound.Y0 && y < bound.Y1 {
+				if id != f.hoverID || !f.hoverWas {
+					if id != f.hoverOffID && !f.hoverOffWas {
+						oldHoverable, ok := f.elements[f.hoverOffID].(Hoverable)
+						if ok {
+							go oldHoverable.HoverOff()
+						}
+					}
+					f.hoverWas = true
+					f.hoverID = id
+					f.hoverOffWas = false
+					f.hoverOffID = id
+					hoverable, ok := f.elements[id].(Hoverable)
+					if ok {
+						go hoverable.Hover()
+					}
+				}
+			} else if id == f.hoverOffID && !f.hoverOffWas {
+				f.hoverOffWas = true
+				hoverable, ok := f.elements[id].(Hoverable)
+				if ok {
+					go hoverable.HoverOff()
+				}
+			}
+		}
 	}
 	return nil
 }

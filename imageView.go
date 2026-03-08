@@ -7,6 +7,8 @@ type ImageView struct {
 	img        *ebiten.Image
 	x, y       float64
 	onClick    func()
+	onHover    func()
+	onHoverOff func()
 }
 
 func NewImageView() *ImageView {
@@ -24,6 +26,26 @@ func (iv *ImageView) SetOnClickListener(onClick func()) {
 func (iv *ImageView) Click() {
 	if iv.onClick != nil {
 		iv.onClick()
+	}
+}
+
+func (iv *ImageView) SetOnHoverListener(onHover func()) {
+	iv.onHover = onHover
+}
+
+func (iv *ImageView) SetOnHoverOffListener(onHoverOff func()) {
+	iv.onHoverOff = onHoverOff
+}
+
+func (iv *ImageView) Hover() {
+	if iv.onHover != nil {
+		iv.onHover()
+	}
+}
+
+func (iv *ImageView) HoverOff() {
+	if iv.onHoverOff != nil {
+		iv.onHoverOff()
 	}
 }
 

@@ -15,6 +15,8 @@ type AnimationView struct {
 	anim       *Animation
 	x, y       float64
 	onClick    func()
+	onHover    func()
+	onHoverOff func()
 }
 
 func NewAnimationView() *AnimationView {
@@ -32,6 +34,26 @@ func (av *AnimationView) SetOnClickListener(onClick func()) {
 func (av *AnimationView) Click() {
 	if av.onClick != nil {
 		av.onClick()
+	}
+}
+
+func (av *AnimationView) SetOnHoverListener(onHover func()) {
+	av.onHover = onHover
+}
+
+func (av *AnimationView) SetOnHoverOffListener(onHoverOff func()) {
+	av.onHoverOff = onHoverOff
+}
+
+func (av *AnimationView) Hover() {
+	if av.onHover != nil {
+		av.onHover()
+	}
+}
+
+func (av *AnimationView) HoverOff() {
+	if av.onHoverOff != nil {
+		av.onHoverOff()
 	}
 }
 
