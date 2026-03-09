@@ -132,7 +132,7 @@ func (c *Сalculator) append(unit string) {
 }
 
 func (c *Сalculator) ShowErr() {
-	c.ClearDisplay()
+	c.clearDisplay()
 	for i, digitView := range c.displayDigits {
 		switch i {
 		case 5:
@@ -146,7 +146,7 @@ func (c *Сalculator) ShowErr() {
 }
 
 func (c *Сalculator) RefreshDisplay() {
-	c.ClearDisplay()
+	c.clearDisplay()
 	if len(c.onDisplay) > 0 {
 		borderSize := 11
 		if strings.Contains(c.onDisplay, "+") {
@@ -208,7 +208,7 @@ func (c *Сalculator) RefreshDisplay() {
 	}
 }
 
-func (c *Сalculator) ClearDisplay() {
+func (c *Сalculator) clearDisplay() {
 	for i, digitView := range c.displayDigits {
 		digitView.SetImage(c.displayImages[15])
 		c.displayDots[i].SetImage(c.displayImages[16])
@@ -218,11 +218,13 @@ func (c *Сalculator) ClearDisplay() {
 func (c *Сalculator) Clear() {
 	c.operand = big.NewFloat(0)
 	c.onDisplay = ""
-	c.ClearDisplay()
+	c.clearDisplay()
 }
 
 func (c *Сalculator) ClearOnePosition() {
-	if len(c.onDisplay) > 0 {
+	if len(c.onDisplay) < 2 {
+		c.Clear()
+	} else {
 		newValue := c.onDisplay[:len(c.onDisplay)-1]
 		var ok bool
 		c.operand, ok = c.operand.SetString(newValue)

@@ -26,6 +26,12 @@ func (l *layout) AddLayout(nl *layout) {
 	l.layouts = append(l.layouts, nl)
 }
 
+func (l *layout) AddViews(v ...view) {
+	for _, v := range v {
+		l.AddView(v)
+	}
+}
+
 func (l *layout) AddView(v view) {
 	if len(l.layouts) > 0 {
 		panic("Layout can contain only elements or only other layouts")

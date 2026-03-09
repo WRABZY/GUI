@@ -15,8 +15,9 @@ func NewImageView() *ImageView {
 	return &ImageView{identifier: assignID()}
 }
 
-func (iv *ImageView) SetImage(image *ebiten.Image) {
+func (iv *ImageView) SetImage(image *ebiten.Image) *ImageView {
 	iv.img = image
+	return iv
 }
 
 func (iv *ImageView) SetOnClickListener(onClick func()) {

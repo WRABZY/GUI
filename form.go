@@ -135,6 +135,14 @@ func (f *form) PlaySound() {
 	f.audioPlayer.Play()
 }
 
+func (f *form) StopSound() {
+	f.audioPlayer.Pause()
+}
+
+func (f *form) IsPlaying() bool {
+	return f.audioPlayer.IsPlaying()
+}
+
 func (f *form) Draw(screen *ebiten.Image) {
 	for _, elem := range f.elements {
 		x, y := elem.coordinates()

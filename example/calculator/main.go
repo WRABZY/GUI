@@ -11,142 +11,122 @@ import (
 )
 
 func main() {
-	var f = gui.NewForm("CALCULATOR")
-	//icon16, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/icons/icon16.png")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//icon32, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/icons/icon32.png")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//icon48, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/icons/icon48.png")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//f.SetIcons(icon16, icon32, icon48)
+
+	layoutBorderTopH := gui.NewHorizontalLayout()
+	var viewBorderTopH = gui.NewImageView().SetImage(assetImgBorderH)
+	layoutBorderTopH.AddView(viewBorderTopH)
+
+	layoutDisplay := gui.NewHorizontalLayout()
+	var viewBorderDisplayLeftV = gui.NewImageView().SetImage(assetImgBorderDisplayVertical)
+	var viewDisplayDigitFiller = gui.NewImageView().SetImage(assetImgDisplayDigitFiller)
+	var viewDisplayDigit0 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot0 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit1 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot1 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit2 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot2 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit3 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot3 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit4 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot4 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit5 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot5 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit6 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot6 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit7 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot7 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit8 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot8 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewDisplayDigit9 = gui.NewImageView().SetImage(assetImgDisplayDigitEmpty)
+	var viewDisplayDot9 = gui.NewImageView().SetImage(assetImgDisplayDotEmpty)
+	var viewBorderDisplayRightV = gui.NewImageView().SetImage(assetImgBorderDisplayVertical)
+	layoutDisplay.AddViews(
+		viewBorderDisplayLeftV,
+		viewDisplayDigitFiller,
+		viewDisplayDigit0,
+		viewDisplayDot0,
+		viewDisplayDigit1,
+		viewDisplayDot1,
+		viewDisplayDigit2,
+		viewDisplayDot2,
+		viewDisplayDigit3,
+		viewDisplayDot3,
+		viewDisplayDigit4,
+		viewDisplayDot4,
+		viewDisplayDigit5,
+		viewDisplayDot5,
+		viewDisplayDigit6,
+		viewDisplayDot6,
+		viewDisplayDigit7,
+		viewDisplayDot7,
+		viewDisplayDigit8,
+		viewDisplayDot8,
+		viewDisplayDigit9,
+		viewDisplayDot9,
+		viewBorderDisplayRightV,
+	)
+
+	layoutBorderDisplayBotH := gui.NewHorizontalLayout()
+	var viewBorderDisplayBotH = gui.NewImageView().SetImage(assetImgBorderH)
+	layoutBorderDisplayBotH.AddView(viewBorderDisplayBotH)
+
+	layoutButtons1 := gui.NewHorizontalLayout()
+	var viewButtons1BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
+	var buttonsRow1L1 = gui.NewImageView().SetImage(assetImgControlL1)
+	var buttonsRow1Up = gui.NewImageView().SetImage(assetImgOperatorTop)
+	var buttonsRow1R1 = gui.NewImageView().SetImage(assetImgControlR1)
+	var buttonsRow1Empty = gui.NewImageView().SetImage(assetImgEmpty)
+	var buttonsRow1L2 = gui.NewImageView().SetImage(assetImgControlL2)
+	var buttonsRow1Y = gui.NewImageView().SetImage(assetImgActionTop)
+	var buttonsRow1R2 = gui.NewImageView().SetImage(assetImgControlR2)
+	var buttonsRow1VerticalBorderRight = gui.NewImageView().SetImage(assetImgBorderV)
+	layoutButtons1.AddViews(
+		viewButtons1BorderLeftV,
+		buttonsRow1L1,
+		buttonsRow1Up,
+		buttonsRow1R1,
+		buttonsRow1Empty,
+		buttonsRow1L2,
+		buttonsRow1Y,
+		buttonsRow1R2,
+		buttonsRow1VerticalBorderRight,
+	)
+
+	layoutButtons2 := gui.NewHorizontalLayout()
+	layoutButtons3 := gui.NewHorizontalLayout()
+	layoutButtons4 := gui.NewHorizontalLayout()
+	layoutButtons5 := gui.NewHorizontalLayout()
+	layoutButtons6 := gui.NewHorizontalLayout()
+	layoutBorderBotH := gui.NewHorizontalLayout()
 
 	rootLayout := gui.NewVerticalLayout()
-	f.SetLayout(rootLayout)
+	rootLayout.AddLayout(layoutBorderTopH)
+	rootLayout.AddLayout(layoutDisplay)
+	rootLayout.AddLayout(layoutBorderDisplayBotH)
+	rootLayout.AddLayout(layoutButtons1)
+	rootLayout.AddLayout(layoutButtons2)
+	rootLayout.AddLayout(layoutButtons3)
+	rootLayout.AddLayout(layoutButtons4)
+	rootLayout.AddLayout(layoutButtons5)
+	rootLayout.AddLayout(layoutButtons6)
+	rootLayout.AddLayout(layoutBorderBotH)
 
-	topBorderLayout := gui.NewHorizontalLayout()
-	displayLayout := gui.NewHorizontalLayout()
-	displayBorderLayout := gui.NewHorizontalLayout()
-	buttonsRow1Layout := gui.NewHorizontalLayout()
-	buttonsRow2Layout := gui.NewHorizontalLayout()
-	buttonsRow3Layout := gui.NewHorizontalLayout()
-	buttonsRow4Layout := gui.NewHorizontalLayout()
-	buttonsRow5Layout := gui.NewHorizontalLayout()
-	buttonsRow6Layout := gui.NewHorizontalLayout()
-	botBorderLayout := gui.NewHorizontalLayout()
+	form.SetLayout(rootLayout)
+	form.SetIcons(assetImgIcon16, assetImgIcon32, assetImgIcon48)
 
-	rootLayout.AddLayout(topBorderLayout)
-	rootLayout.AddLayout(displayLayout)
-	rootLayout.AddLayout(displayBorderLayout)
-	rootLayout.AddLayout(buttonsRow1Layout)
-	rootLayout.AddLayout(buttonsRow2Layout)
-	rootLayout.AddLayout(buttonsRow3Layout)
-	rootLayout.AddLayout(buttonsRow4Layout)
-	rootLayout.AddLayout(buttonsRow5Layout)
-	rootLayout.AddLayout(buttonsRow6Layout)
-	rootLayout.AddLayout(botBorderLayout)
-
-	horizontalBorderImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/border_horizontal.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	var topHBorder = gui.NewImageView()
-	topHBorder.SetImage(horizontalBorderImage)
-	topBorderLayout.AddView(topHBorder)
-
-	displayVerticalBorderImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/border_vertical_display.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigitFiller, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_filler.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayEmptyDigitImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_empty.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayEmptyDotImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_dot_empty.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	var displayVerticalBorderLeft = gui.NewImageView()
-	var displayDigitFillerStart = gui.NewImageView()
-	var displayDigitView0 = gui.NewImageView()
-	var displayDot0 = gui.NewImageView()
-	var displayDigitView1 = gui.NewImageView()
-	var displayDot1 = gui.NewImageView()
-	var displayDigitView2 = gui.NewImageView()
-	var displayDot2 = gui.NewImageView()
-	var displayDigitView3 = gui.NewImageView()
-	var displayDot3 = gui.NewImageView()
-	var displayDigitView4 = gui.NewImageView()
-	var displayDot4 = gui.NewImageView()
-	var displayDigitView5 = gui.NewImageView()
-	var displayDot5 = gui.NewImageView()
-	var displayDigitView6 = gui.NewImageView()
-	var displayDot6 = gui.NewImageView()
-	var displayDigitView7 = gui.NewImageView()
-	var displayDot7 = gui.NewImageView()
-	var displayDigitView8 = gui.NewImageView()
-	var displayDot8 = gui.NewImageView()
-	var displayDigitView9 = gui.NewImageView()
-	var displayDot9 = gui.NewImageView()
-	var displayVerticalBorderRight = gui.NewImageView()
-	displayVerticalBorderLeft.SetImage(displayVerticalBorderImage)
-	displayDigitFillerStart.SetImage(displayDigitFiller)
-	displayDigitView0.SetImage(displayEmptyDigitImage)
-	displayDot0.SetImage(displayEmptyDotImage)
-	displayDigitView1.SetImage(displayEmptyDigitImage)
-	displayDot1.SetImage(displayEmptyDotImage)
-	displayDigitView2.SetImage(displayEmptyDigitImage)
-	displayDot2.SetImage(displayEmptyDotImage)
-	displayDigitView3.SetImage(displayEmptyDigitImage)
-	displayDot3.SetImage(displayEmptyDotImage)
-	displayDigitView4.SetImage(displayEmptyDigitImage)
-	displayDot4.SetImage(displayEmptyDotImage)
-	displayDigitView5.SetImage(displayEmptyDigitImage)
-	displayDot5.SetImage(displayEmptyDotImage)
-	displayDigitView6.SetImage(displayEmptyDigitImage)
-	displayDot6.SetImage(displayEmptyDotImage)
-	displayDigitView7.SetImage(displayEmptyDigitImage)
-	displayDot7.SetImage(displayEmptyDotImage)
-	displayDigitView8.SetImage(displayEmptyDigitImage)
-	displayDot8.SetImage(displayEmptyDotImage)
-	displayDigitView9.SetImage(displayEmptyDigitImage)
-	displayDot9.SetImage(displayEmptyDotImage)
-	displayVerticalBorderRight.SetImage(displayVerticalBorderImage)
-	displayLayout.AddView(displayVerticalBorderLeft)
-	displayLayout.AddView(displayDigitFillerStart)
-	displayLayout.AddView(displayDigitView0)
-	displayLayout.AddView(displayDot0)
-	displayLayout.AddView(displayDigitView1)
-	displayLayout.AddView(displayDot1)
-	displayLayout.AddView(displayDigitView2)
-	displayLayout.AddView(displayDot2)
-	displayLayout.AddView(displayDigitView3)
-	displayLayout.AddView(displayDot3)
-	displayLayout.AddView(displayDigitView4)
-	displayLayout.AddView(displayDot4)
-	displayLayout.AddView(displayDigitView5)
-	displayLayout.AddView(displayDot5)
-	displayLayout.AddView(displayDigitView6)
-	displayLayout.AddView(displayDot6)
-	displayLayout.AddView(displayDigitView7)
-	displayLayout.AddView(displayDot7)
-	displayLayout.AddView(displayDigitView8)
-	displayLayout.AddView(displayDot8)
-	displayLayout.AddView(displayDigitView9)
-	displayLayout.AddView(displayDot9)
-	displayLayout.AddView(displayVerticalBorderRight)
+	buttonsRow1L2.SetOnClickListener(
+		func() {
+			form.SwitchFullscreen()
+		},
+	)
+	buttonsRow1R2.SetOnClickListener(
+		func() {
+			os.Exit(0)
+		},
+	)
 
 	calculator.SetDisplayDigits(
-		displayDigitView0,
+		viewDisplayDigit0,
 		displayDigitView1,
 		displayDigitView2,
 		displayDigitView3,
@@ -159,7 +139,7 @@ func main() {
 	)
 
 	calculator.SetDisplayDots(
-		displayDot0,
+		viewDisplayDot0,
 		displayDot1,
 		displayDot2,
 		displayDot3,
@@ -171,181 +151,26 @@ func main() {
 		displayDot9,
 	)
 
-	displayDigit0Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_0.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_1.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_2.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit3Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_3.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit4Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_4.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit5Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_5.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit6Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_6.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit7Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_7.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit8Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_8.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigit9Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_9.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigitDotImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_dot.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigitEImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_e.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigitRImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_r.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayDigitOImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_digit_o.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	displayMinusImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/display_minus.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	calculator.SetDisplayImages(
-		displayDigit0Image,
-		displayDigit1Image,
-		displayDigit2Image,
-		displayDigit3Image,
-		displayDigit4Image,
-		displayDigit5Image,
-		displayDigit6Image,
-		displayDigit7Image,
-		displayDigit8Image,
-		displayDigit9Image,
-		displayDigitDotImage,
-		displayDigitEImage,
-		displayDigitRImage,
-		displayDigitOImage,
-		displayMinusImage,
-		displayEmptyDigitImage,
-		displayEmptyDotImage,
+	calculator.SetDisplaassetImgActionTops(
+		assetImgDisplayDigit0,
+		assetImgDisplayDigit1,
+		assetImgDisplayDigit2,
+		assetImgDisplayDigit3,
+		assetImgDisplayDigit4,
+		assetImgDisplayDigit5,
+		assetImgDisplayDigit6,
+		assetImgDisplayDigit7,
+		assetImgDisplayDigit8,
+		assetImgDisplayDigit9,
+		assetImgDisplayDot,
+		assetImgDisplayDigitE,
+		assetImgDisplayDigitR,
+		assetImgDisplayDigitO,
+		assetImgDisplayDigitMinus,
+		assetImgDisplayDigitEmpty,
+		assetImgDisplayDotEmpty,
 	)
 
-	var displayHBorder = gui.NewImageView()
-	displayHBorder.SetImage(horizontalBorderImage)
-	displayBorderLayout.AddView(displayHBorder)
-
-	verticalBorderImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/border_vertical.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	l1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/op_l1.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	upImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/up.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	r1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/op_r1.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	emptyImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/empty.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	l2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/l2.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	yImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/y.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	r2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/r2.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	var buttonsRow1VerticalBorderLeft = gui.NewImageView()
-	var buttonsRow1L1 = gui.NewImageView()
-	var buttonsRow1Up = gui.NewImageView()
-	var buttonsRow1R1 = gui.NewImageView()
-	var buttonsRow1Empty = gui.NewImageView()
-	var buttonsRow1L2 = gui.NewImageView()
-	var buttonsRow1Y = gui.NewImageView()
-	var buttonsRow1R2 = gui.NewImageView()
-	var buttonsRow1VerticalBorderRight = gui.NewImageView()
-	buttonsRow1VerticalBorderLeft.SetImage(verticalBorderImage)
-	buttonsRow1L1.SetImage(l1Image)
-	buttonsRow1Up.SetImage(upImage)
-	buttonsRow1R1.SetImage(r1Image)
-	buttonsRow1Empty.SetImage(emptyImage)
-	buttonsRow1L2.SetImage(l2Image)
-	buttonsRow1Y.SetImage(yImage)
-	buttonsRow1R2.SetImage(r2Image)
-	buttonsRow1VerticalBorderRight.SetImage(verticalBorderImage)
-	buttonsRow1Layout.AddView(buttonsRow1VerticalBorderLeft)
-	buttonsRow1Layout.AddView(buttonsRow1L1)
-	buttonsRow1Layout.AddView(buttonsRow1Up)
-	buttonsRow1Layout.AddView(buttonsRow1R1)
-	buttonsRow1Layout.AddView(buttonsRow1Empty)
-	buttonsRow1Layout.AddView(buttonsRow1L2)
-	buttonsRow1Layout.AddView(buttonsRow1Y)
-	buttonsRow1Layout.AddView(buttonsRow1R2)
-	buttonsRow1Layout.AddView(buttonsRow1VerticalBorderRight)
-	buttonsRow1L2.SetOnClickListener(
-		func() {
-			f.SwitchFullscreen()
-		},
-	)
-	buttonsRow1R2.SetOnClickListener(
-		func() {
-			os.Exit(0)
-		},
-	)
-
-	leftImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/left.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	centerImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/center.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	rightImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/right.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	xImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/x.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	bImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/b.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	var buttonsRow2VerticalBorderLeft = gui.NewImageView()
 	var buttonsRow2Left = gui.NewImageView()
 	var buttonsRow2Center = gui.NewImageView()
@@ -355,47 +180,27 @@ func main() {
 	var buttonsRow2Empty2 = gui.NewImageView()
 	var buttonsRow2B = gui.NewImageView()
 	var buttonsRow2VerticalBorderRight = gui.NewImageView()
-	buttonsRow2VerticalBorderLeft.SetImage(verticalBorderImage)
+	buttonsRow2VerticalBorderLeft.SetImage(assetImgBorderV)
 	buttonsRow2Left.SetImage(leftImage)
 	buttonsRow2Center.SetImage(centerImage)
 	buttonsRow2Right.SetImage(rightImage)
-	buttonsRow2Empty1.SetImage(emptyImage)
+	buttonsRow2Empty1.SetImage(assetImgEmpty)
 	buttonsRow2X.SetImage(xImage)
-	buttonsRow2Empty2.SetImage(emptyImage)
+	buttonsRow2Empty2.SetImage(assetImgEmpty)
 	buttonsRow2B.SetImage(bImage)
-	buttonsRow2VerticalBorderRight.SetImage(verticalBorderImage)
-	buttonsRow2Layout.AddView(buttonsRow2VerticalBorderLeft)
-	buttonsRow2Layout.AddView(buttonsRow2Left)
-	buttonsRow2Layout.AddView(buttonsRow2Center)
-	buttonsRow2Layout.AddView(buttonsRow2Right)
-	buttonsRow2Layout.AddView(buttonsRow2Empty1)
-	buttonsRow2Layout.AddView(buttonsRow2X)
-	buttonsRow2Layout.AddView(buttonsRow2Empty2)
-	buttonsRow2Layout.AddView(buttonsRow2B)
-	buttonsRow2Layout.AddView(buttonsRow2VerticalBorderRight)
+	buttonsRow2VerticalBorderRight.SetImage(assetImgBorderV)
+	layoutButtons2.AddView(buttonsRow2VerticalBorderLeft)
+	layoutButtons2.AddView(buttonsRow2Left)
+	layoutButtons2.AddView(buttonsRow2Center)
+	layoutButtons2.AddView(buttonsRow2Right)
+	layoutButtons2.AddView(buttonsRow2Empty1)
+	layoutButtons2.AddView(buttonsRow2X)
+	layoutButtons2.AddView(buttonsRow2Empty2)
+	layoutButtons2.AddView(buttonsRow2B)
+	layoutButtons2.AddView(buttonsRow2VerticalBorderRight)
 	buttonsRow2X.SetOnClickListener(calculator.ClearOnePosition)
 	buttonsRow2B.SetOnClickListener(calculator.Clear)
 
-	botImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/bot.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b7Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/7.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b8Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/8.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b9Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/9.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	aImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/a.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	var buttonsRow3VerticalBorderLeft = gui.NewImageView()
 	var buttonsRow3Empty1 = gui.NewImageView()
 	var buttonsRow3Bot = gui.NewImageView()
@@ -405,24 +210,24 @@ func main() {
 	var buttonsRow3A = gui.NewImageView()
 	var buttonsRow3Empty2 = gui.NewImageView()
 	var buttonsRow3VerticalBorderRight = gui.NewImageView()
-	buttonsRow3VerticalBorderLeft.SetImage(verticalBorderImage)
-	buttonsRow3Empty1.SetImage(emptyImage)
+	buttonsRow3VerticalBorderLeft.SetImage(assetImgBorderV)
+	buttonsRow3Empty1.SetImage(assetImgEmpty)
 	buttonsRow3Bot.SetImage(botImage)
 	buttonsRow3B7.SetImage(b7Image)
 	buttonsRow3B8.SetImage(b8Image)
 	buttonsRow3B9.SetImage(b9Image)
 	buttonsRow3A.SetImage(aImage)
-	buttonsRow3Empty2.SetImage(emptyImage)
-	buttonsRow3VerticalBorderRight.SetImage(verticalBorderImage)
-	buttonsRow3Layout.AddView(buttonsRow3VerticalBorderLeft)
-	buttonsRow3Layout.AddView(buttonsRow3Empty1)
-	buttonsRow3Layout.AddView(buttonsRow3Bot)
-	buttonsRow3Layout.AddView(buttonsRow3B7)
-	buttonsRow3Layout.AddView(buttonsRow3B8)
-	buttonsRow3Layout.AddView(buttonsRow3B9)
-	buttonsRow3Layout.AddView(buttonsRow3A)
-	buttonsRow3Layout.AddView(buttonsRow3Empty2)
-	buttonsRow3Layout.AddView(buttonsRow3VerticalBorderRight)
+	buttonsRow3Empty2.SetImage(assetImgEmpty)
+	buttonsRow3VerticalBorderRight.SetImage(assetImgBorderV)
+	layoutButtons3.AddView(buttonsRow3VerticalBorderLeft)
+	layoutButtons3.AddView(buttonsRow3Empty1)
+	layoutButtons3.AddView(buttonsRow3Bot)
+	layoutButtons3.AddView(buttonsRow3B7)
+	layoutButtons3.AddView(buttonsRow3B8)
+	layoutButtons3.AddView(buttonsRow3B9)
+	layoutButtons3.AddView(buttonsRow3A)
+	layoutButtons3.AddView(buttonsRow3Empty2)
+	layoutButtons3.AddView(buttonsRow3VerticalBorderRight)
 	buttonsRow3B7.SetOnClickListener(func() {
 		calculator.AppendSeven()
 	})
@@ -438,30 +243,27 @@ func main() {
 		panic(err)
 	}
 	sound, err := wav.DecodeF32(file)
-	f.AddSound(sound)
+	form.AddSound(sound)
 
 	buttonsRow3B7.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 	buttonsRow3B8.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 	buttonsRow3B9.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 
-	b4Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/4.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b5Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/5.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b6Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/6.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	var buttonsRow4VerticalBorderLeft = gui.NewImageView()
 	var buttonsRow4Empty1 = gui.NewImageView()
 	var buttonsRow4Empty2 = gui.NewImageView()
@@ -471,24 +273,24 @@ func main() {
 	var buttonsRow4Empty3 = gui.NewImageView()
 	var buttonsRow4Empty4 = gui.NewImageView()
 	var buttonsRow4VerticalBorderRight = gui.NewImageView()
-	buttonsRow4VerticalBorderLeft.SetImage(verticalBorderImage)
-	buttonsRow4Empty1.SetImage(emptyImage)
-	buttonsRow4Empty2.SetImage(emptyImage)
+	buttonsRow4VerticalBorderLeft.SetImage(assetImgBorderV)
+	buttonsRow4Empty1.SetImage(assetImgEmpty)
+	buttonsRow4Empty2.SetImage(assetImgEmpty)
 	buttonsRow4B4.SetImage(b4Image)
 	buttonsRow4B5.SetImage(b5Image)
 	buttonsRow4B6.SetImage(b6Image)
-	buttonsRow4Empty3.SetImage(emptyImage)
-	buttonsRow4Empty4.SetImage(emptyImage)
-	buttonsRow4VerticalBorderRight.SetImage(verticalBorderImage)
-	buttonsRow4Layout.AddView(buttonsRow4VerticalBorderLeft)
-	buttonsRow4Layout.AddView(buttonsRow4Empty1)
-	buttonsRow4Layout.AddView(buttonsRow4Empty2)
-	buttonsRow4Layout.AddView(buttonsRow4B4)
-	buttonsRow4Layout.AddView(buttonsRow4B5)
-	buttonsRow4Layout.AddView(buttonsRow4B6)
-	buttonsRow4Layout.AddView(buttonsRow4Empty3)
-	buttonsRow4Layout.AddView(buttonsRow4Empty4)
-	buttonsRow4Layout.AddView(buttonsRow4VerticalBorderRight)
+	buttonsRow4Empty3.SetImage(assetImgEmpty)
+	buttonsRow4Empty4.SetImage(assetImgEmpty)
+	buttonsRow4VerticalBorderRight.SetImage(assetImgBorderV)
+	layoutButtons4.AddView(buttonsRow4VerticalBorderLeft)
+	layoutButtons4.AddView(buttonsRow4Empty1)
+	layoutButtons4.AddView(buttonsRow4Empty2)
+	layoutButtons4.AddView(buttonsRow4B4)
+	layoutButtons4.AddView(buttonsRow4B5)
+	layoutButtons4.AddView(buttonsRow4B6)
+	layoutButtons4.AddView(buttonsRow4Empty3)
+	layoutButtons4.AddView(buttonsRow4Empty4)
+	layoutButtons4.AddView(buttonsRow4VerticalBorderRight)
 	buttonsRow4B4.SetOnClickListener(func() {
 		calculator.AppendFour()
 	})
@@ -500,27 +302,24 @@ func main() {
 	})
 
 	buttonsRow4B4.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 	buttonsRow4B5.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 	buttonsRow4B6.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 
-	b1Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/1.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b2Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/2.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b3Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/3.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	var buttonsRow5VerticalBorderLeft = gui.NewImageView()
 	var buttonsRow5Empty1 = gui.NewImageView()
 	var buttonsRow5Empty2 = gui.NewImageView()
@@ -530,24 +329,24 @@ func main() {
 	var buttonsRow5Empty3 = gui.NewImageView()
 	var buttonsRow5Empty4 = gui.NewImageView()
 	var buttonsRow5VerticalBorderRight = gui.NewImageView()
-	buttonsRow5VerticalBorderLeft.SetImage(verticalBorderImage)
-	buttonsRow5Empty1.SetImage(emptyImage)
-	buttonsRow5Empty2.SetImage(emptyImage)
+	buttonsRow5VerticalBorderLeft.SetImage(assetImgBorderV)
+	buttonsRow5Empty1.SetImage(assetImgEmpty)
+	buttonsRow5Empty2.SetImage(assetImgEmpty)
 	buttonsRow5B1.SetImage(b1Image)
 	buttonsRow5B2.SetImage(b2Image)
 	buttonsRow5B3.SetImage(b3Image)
-	buttonsRow5Empty3.SetImage(emptyImage)
-	buttonsRow5Empty4.SetImage(emptyImage)
-	buttonsRow5VerticalBorderRight.SetImage(verticalBorderImage)
-	buttonsRow5Layout.AddView(buttonsRow5VerticalBorderLeft)
-	buttonsRow5Layout.AddView(buttonsRow5Empty1)
-	buttonsRow5Layout.AddView(buttonsRow5Empty2)
-	buttonsRow5Layout.AddView(buttonsRow5B1)
-	buttonsRow5Layout.AddView(buttonsRow5B2)
-	buttonsRow5Layout.AddView(buttonsRow5B3)
-	buttonsRow5Layout.AddView(buttonsRow5Empty3)
-	buttonsRow5Layout.AddView(buttonsRow5Empty4)
-	buttonsRow5Layout.AddView(buttonsRow5VerticalBorderRight)
+	buttonsRow5Empty3.SetImage(assetImgEmpty)
+	buttonsRow5Empty4.SetImage(assetImgEmpty)
+	buttonsRow5VerticalBorderRight.SetImage(assetImgBorderV)
+	layoutButtons5.AddView(buttonsRow5VerticalBorderLeft)
+	layoutButtons5.AddView(buttonsRow5Empty1)
+	layoutButtons5.AddView(buttonsRow5Empty2)
+	layoutButtons5.AddView(buttonsRow5B1)
+	layoutButtons5.AddView(buttonsRow5B2)
+	layoutButtons5.AddView(buttonsRow5B3)
+	layoutButtons5.AddView(buttonsRow5Empty3)
+	layoutButtons5.AddView(buttonsRow5Empty4)
+	layoutButtons5.AddView(buttonsRow5VerticalBorderRight)
 	buttonsRow5B1.SetOnClickListener(func() {
 		calculator.AppendOne()
 	})
@@ -559,27 +358,24 @@ func main() {
 	})
 
 	buttonsRow5B1.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 	buttonsRow5B2.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 	buttonsRow5B3.SetOnHoverListener(func() {
-		f.PlaySound()
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
 	})
 
-	unaryMinusImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/unary_minus.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	b0Image, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/0.png")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dotImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/dot.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	var buttonsRow6VerticalBorderLeft = gui.NewImageView()
 	var buttonsRow6Empty1 = gui.NewImageView()
 	var buttonsRow6Empty2 = gui.NewImageView()
@@ -589,31 +385,40 @@ func main() {
 	var buttonsRow6Empty3 = gui.NewImageView()
 	var buttonsRow6Empty4 = gui.NewImageView()
 	var buttonsRow6VerticalBorderRight = gui.NewImageView()
-	buttonsRow6VerticalBorderLeft.SetImage(verticalBorderImage)
-	buttonsRow6Empty1.SetImage(emptyImage)
-	buttonsRow6Empty2.SetImage(emptyImage)
+	buttonsRow6VerticalBorderLeft.SetImage(assetImgBorderV)
+	buttonsRow6Empty1.SetImage(assetImgEmpty)
+	buttonsRow6Empty2.SetImage(assetImgEmpty)
 	buttonsRow6UnaryMinus.SetImage(unaryMinusImage)
 	buttonsRow6B0.SetImage(b0Image)
 	buttonsRow6Bdot.SetImage(dotImage)
-	buttonsRow6Empty3.SetImage(emptyImage)
-	buttonsRow6Empty4.SetImage(emptyImage)
-	buttonsRow6VerticalBorderRight.SetImage(verticalBorderImage)
-	buttonsRow6Layout.AddView(buttonsRow6VerticalBorderLeft)
-	buttonsRow6Layout.AddView(buttonsRow6Empty1)
-	buttonsRow6Layout.AddView(buttonsRow6Empty2)
-	buttonsRow6Layout.AddView(buttonsRow6UnaryMinus)
-	buttonsRow6Layout.AddView(buttonsRow6B0)
-	buttonsRow6Layout.AddView(buttonsRow6Bdot)
-	buttonsRow6Layout.AddView(buttonsRow6Empty3)
-	buttonsRow6Layout.AddView(buttonsRow6Empty4)
-	buttonsRow6Layout.AddView(buttonsRow6VerticalBorderRight)
+	buttonsRow6Empty3.SetImage(assetImgEmpty)
+	buttonsRow6Empty4.SetImage(assetImgEmpty)
+	buttonsRow6VerticalBorderRight.SetImage(assetImgBorderV)
+	layoutButtons6.AddView(buttonsRow6VerticalBorderLeft)
+	layoutButtons6.AddView(buttonsRow6Empty1)
+	layoutButtons6.AddView(buttonsRow6Empty2)
+	layoutButtons6.AddView(buttonsRow6UnaryMinus)
+	layoutButtons6.AddView(buttonsRow6B0)
+	layoutButtons6.AddView(buttonsRow6Bdot)
+	layoutButtons6.AddView(buttonsRow6Empty3)
+	layoutButtons6.AddView(buttonsRow6Empty4)
+	layoutButtons6.AddView(buttonsRow6VerticalBorderRight)
 	buttonsRow6UnaryMinus.SetOnClickListener(calculator.SwitchSign)
 	buttonsRow6B0.SetOnClickListener(calculator.AppendZero)
 	buttonsRow6Bdot.SetOnClickListener(calculator.AppendDot)
 
+	buttonsRow6B0.SetOnHoverListener(func() {
+		if form.IsPlaying() {
+			return
+		}
+		form.PlaySound()
+	})
+
 	var botHBorder = gui.NewImageView()
-	botHBorder.SetImage(horizontalBorderImage)
-	botBorderLayout.AddView(botHBorder)
+	botHBorder.SetImage(assetImgBorderH)
+	layoutBorderBotH.AddView(botHBorder)
+
+	var form = gui.NewForm("Calculator")
 
 	/*
 		ivImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/48x48.png")
@@ -651,6 +456,6 @@ func main() {
 
 	// var tv = gui.NewTextView("github.com/WRABZY/gui")
 
-	// f.OpenWithExecute(avAnimation.Start)
-	f.Open()
+	// form.OpenWithExecute(avAnimation.Start)
+	form.Open()
 }
