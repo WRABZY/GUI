@@ -1,13 +1,9 @@
 package main
 
 import (
-	"log"
 	"os"
 
-	"github.com/hajimehoshi/ebiten/v2/audio/wav"
 	"github.com/wrabzy/gui"
-
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 func main() {
@@ -72,32 +68,139 @@ func main() {
 
 	layoutButtons1 := gui.NewHorizontalLayout()
 	var viewButtons1BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
-	var buttonsRow1L1 = gui.NewImageView().SetImage(assetImgControlL1)
-	var buttonsRow1Up = gui.NewImageView().SetImage(assetImgOperatorTop)
-	var buttonsRow1R1 = gui.NewImageView().SetImage(assetImgControlR1)
-	var buttonsRow1Empty = gui.NewImageView().SetImage(assetImgEmpty)
-	var buttonsRow1L2 = gui.NewImageView().SetImage(assetImgControlL2)
-	var buttonsRow1Y = gui.NewImageView().SetImage(assetImgActionTop)
-	var buttonsRow1R2 = gui.NewImageView().SetImage(assetImgControlR2)
-	var buttonsRow1VerticalBorderRight = gui.NewImageView().SetImage(assetImgBorderV)
+	var viewButtons1ControlL1 = gui.NewImageView().SetImage(assetImgControlL1)
+	var viewButtons1OperatorTop = gui.NewImageView().SetImage(assetImgOperatorTop)
+	var viewButtons1ControlR1 = gui.NewImageView().SetImage(assetImgControlR1)
+	var viewButtons1Empty = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons1ControlL2 = gui.NewImageView().SetImage(assetImgControlL2)
+	var viewButtons1ActionTop = gui.NewImageView().SetImage(assetImgActionTop)
+	var viewButtons1ControlR2 = gui.NewImageView().SetImage(assetImgControlR2)
+	var viewButtons1BorderRightV = gui.NewImageView().SetImage(assetImgBorderV)
 	layoutButtons1.AddViews(
 		viewButtons1BorderLeftV,
-		buttonsRow1L1,
-		buttonsRow1Up,
-		buttonsRow1R1,
-		buttonsRow1Empty,
-		buttonsRow1L2,
-		buttonsRow1Y,
-		buttonsRow1R2,
-		buttonsRow1VerticalBorderRight,
+		viewButtons1ControlL1,
+		viewButtons1OperatorTop,
+		viewButtons1ControlR1,
+		viewButtons1Empty,
+		viewButtons1ControlL2,
+		viewButtons1ActionTop,
+		viewButtons1ControlR2,
+		viewButtons1BorderRightV,
 	)
 
 	layoutButtons2 := gui.NewHorizontalLayout()
+	var viewButtons2BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
+	var viewButtons2OperatorLeft = gui.NewImageView().SetImage(assetImgOperatorLeft)
+	var viewButtons2OperatorCenter = gui.NewImageView().SetImage(assetImgOperatorCenter)
+	var viewButtons2OperatorRight = gui.NewImageView().SetImage(assetImgOperatorRight)
+	var viewButtons2Empty1 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons2ActionLeft = gui.NewImageView().SetImage(assetImgActionLeft)
+	var viewButtons2Empty2 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons2ActionRight = gui.NewImageView().SetImage(assetImgActionRight)
+	var viewButtons2BorderRightV = gui.NewImageView().SetImage(assetImgBorderV)
+	layoutButtons2.AddViews(
+		viewButtons2BorderLeftV,
+		viewButtons2OperatorLeft,
+		viewButtons2OperatorCenter,
+		viewButtons2OperatorRight,
+		viewButtons2Empty1,
+		viewButtons2ActionLeft,
+		viewButtons2Empty2,
+		viewButtons2ActionRight,
+		viewButtons2BorderRightV,
+	)
+
 	layoutButtons3 := gui.NewHorizontalLayout()
+	var viewButtons3BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
+	var viewButtons3Empty1 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons3OperatorBot = gui.NewImageView().SetImage(assetImgOperatorBot)
+	var viewButtons3Numpad7 = gui.NewImageView().SetImage(assetImgNumpad7)
+	var viewButtons3Numpad8 = gui.NewImageView().SetImage(assetImgNumpad8)
+	var viewButtons3Numpad9 = gui.NewImageView().SetImage(assetImgNumpad9)
+	var viewButtons3ActionBot = gui.NewImageView().SetImage(assetImgActionBot)
+	var viewButtons3Empty2 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons3BorderRightV = gui.NewImageView().SetImage(assetImgBorderV)
+	layoutButtons3.AddViews(
+		viewButtons3BorderLeftV,
+		viewButtons3Empty1,
+		viewButtons3OperatorBot,
+		viewButtons3Numpad7,
+		viewButtons3Numpad8,
+		viewButtons3Numpad9,
+		viewButtons3ActionBot,
+		viewButtons3Empty2,
+		viewButtons3BorderRightV,
+	)
+
 	layoutButtons4 := gui.NewHorizontalLayout()
+	var viewButtons4BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
+	var viewButtons4Empty1 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons4Empty2 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons4Numpad4 = gui.NewImageView().SetImage(assetImgNumpad4)
+	var viewButtons4Numpad5 = gui.NewImageView().SetImage(assetImgNumpad5)
+	var viewButtons4Numpad6 = gui.NewImageView().SetImage(assetImgNumpad6)
+	var viewButtons4Empty3 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons4Empty4 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons4BorderRightV = gui.NewImageView().SetImage(assetImgBorderV)
+	layoutButtons4.AddViews(
+		viewButtons4BorderLeftV,
+		viewButtons4Empty1,
+		viewButtons4Empty2,
+		viewButtons4Numpad4,
+		viewButtons4Numpad5,
+		viewButtons4Numpad6,
+		viewButtons4Empty3,
+		viewButtons4Empty4,
+		viewButtons4BorderRightV,
+	)
+
 	layoutButtons5 := gui.NewHorizontalLayout()
+	var viewButtons5BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
+	var viewButtons5Empty1 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons5Empty2 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons5Numpad1 = gui.NewImageView().SetImage(assetImgNumpad1)
+	var viewButtons5Numpad2 = gui.NewImageView().SetImage(assetImgNumpad2)
+	var viewButtons5Numpad3 = gui.NewImageView().SetImage(assetImgNumpad3)
+	var viewButtons5Empty3 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons5Empty4 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons5BorderRightV = gui.NewImageView().SetImage(assetImgBorderV)
+	layoutButtons5.AddViews(
+		viewButtons5BorderLeftV,
+		viewButtons5Empty1,
+		viewButtons5Empty2,
+		viewButtons5Numpad1,
+		viewButtons5Numpad2,
+		viewButtons5Numpad3,
+		viewButtons5Empty3,
+		viewButtons5Empty4,
+		viewButtons5BorderRightV,
+	)
+
 	layoutButtons6 := gui.NewHorizontalLayout()
+	var viewButtons6BorderLeftV = gui.NewImageView().SetImage(assetImgBorderV)
+	var viewButtons6Empty1 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons6Empty2 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons6NumpadMinus = gui.NewImageView().SetImage(assetImgNumpadMinus)
+	var viewButtons6Numpad0 = gui.NewImageView().SetImage(assetImgNumpad0)
+	var viewButtons6NumpadDot = gui.NewImageView().SetImage(assetImgNumpadDot)
+	var viewButtons6Empty3 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons6Empty4 = gui.NewImageView().SetImage(assetImgEmpty)
+	var viewButtons6BorderRightV = gui.NewImageView().SetImage(assetImgBorderV)
+	layoutButtons6.AddViews(
+		viewButtons6BorderLeftV,
+		viewButtons6Empty1,
+		viewButtons6Empty2,
+		viewButtons6NumpadMinus,
+		viewButtons6Numpad0,
+		viewButtons6NumpadDot,
+		viewButtons6Empty3,
+		viewButtons6Empty4,
+		viewButtons6BorderRightV,
+	)
+
 	layoutBorderBotH := gui.NewHorizontalLayout()
+	var viewBorderBotH = gui.NewImageView().SetImage(assetImgBorderH)
+	layoutBorderBotH.AddView(viewBorderBotH)
 
 	rootLayout := gui.NewVerticalLayout()
 	rootLayout.AddLayout(layoutBorderTopH)
@@ -111,47 +214,112 @@ func main() {
 	rootLayout.AddLayout(layoutButtons6)
 	rootLayout.AddLayout(layoutBorderBotH)
 
+	var form = gui.NewForm("Calculator")
 	form.SetLayout(rootLayout)
 	form.SetIcons(assetImgIcon16, assetImgIcon32, assetImgIcon48)
 
-	buttonsRow1L2.SetOnClickListener(
+	soundSelect := gui.NewInterruptableSound(assetSndSelect).Volume(0.2)
+
+	allButtons := [...]*gui.ImageView{
+		viewButtons1ControlL1,
+		viewButtons1OperatorTop,
+		viewButtons1ControlR1,
+		viewButtons1ControlL2,
+		viewButtons1ActionTop,
+		viewButtons1ControlR2,
+		viewButtons2OperatorLeft,
+		viewButtons2OperatorRight,
+		viewButtons2ActionLeft,
+		viewButtons2ActionRight,
+		viewButtons3OperatorBot,
+		viewButtons3Numpad7,
+		viewButtons3Numpad8,
+		viewButtons3Numpad9,
+		viewButtons3ActionBot,
+		viewButtons4Numpad4,
+		viewButtons4Numpad5,
+		viewButtons4Numpad6,
+		viewButtons5Numpad1,
+		viewButtons5Numpad2,
+		viewButtons5Numpad3,
+		viewButtons6NumpadMinus,
+		viewButtons6Numpad0,
+		viewButtons6NumpadDot,
+	}
+	for _, view := range allButtons {
+		view.SetOnHoverListener(soundSelect.Play)
+	}
+
+	viewButtons1ControlL2.SetOnClickListener(
 		func() {
 			form.SwitchFullscreen()
 		},
 	)
-	buttonsRow1R2.SetOnClickListener(
+	viewButtons1ControlR2.SetOnClickListener(
 		func() {
 			os.Exit(0)
 		},
 	)
+	viewButtons2ActionLeft.SetOnClickListener(calculator.ClearOnePosition)
+	viewButtons2ActionRight.SetOnClickListener(calculator.Clear)
+	viewButtons3Numpad7.SetOnClickListener(func() {
+		calculator.AppendSeven()
+	})
+	viewButtons3Numpad8.SetOnClickListener(func() {
+		calculator.AppendEight()
+	})
+	viewButtons3Numpad9.SetOnClickListener(func() {
+		calculator.AppendNine()
+	})
+	viewButtons4Numpad4.SetOnClickListener(func() {
+		calculator.AppendFour()
+	})
+	viewButtons4Numpad5.SetOnClickListener(func() {
+		calculator.AppendFive()
+	})
+	viewButtons4Numpad6.SetOnClickListener(func() {
+		calculator.AppendSix()
+	})
+	viewButtons5Numpad1.SetOnClickListener(func() {
+		calculator.AppendOne()
+	})
+	viewButtons5Numpad2.SetOnClickListener(func() {
+		calculator.AppendTwo()
+	})
+	viewButtons5Numpad3.SetOnClickListener(func() {
+		calculator.AppendThree()
+	})
+	viewButtons6NumpadMinus.SetOnClickListener(calculator.SwitchSign)
+	viewButtons6Numpad0.SetOnClickListener(calculator.AppendZero)
+	viewButtons6NumpadDot.SetOnClickListener(calculator.AppendDot)
 
 	calculator.SetDisplayDigits(
 		viewDisplayDigit0,
-		displayDigitView1,
-		displayDigitView2,
-		displayDigitView3,
-		displayDigitView4,
-		displayDigitView5,
-		displayDigitView6,
-		displayDigitView7,
-		displayDigitView8,
-		displayDigitView9,
+		viewDisplayDigit1,
+		viewDisplayDigit2,
+		viewDisplayDigit3,
+		viewDisplayDigit4,
+		viewDisplayDigit5,
+		viewDisplayDigit6,
+		viewDisplayDigit7,
+		viewDisplayDigit8,
+		viewDisplayDigit9,
 	)
 
 	calculator.SetDisplayDots(
 		viewDisplayDot0,
-		displayDot1,
-		displayDot2,
-		displayDot3,
-		displayDot4,
-		displayDot5,
-		displayDot6,
-		displayDot7,
-		displayDot8,
-		displayDot9,
+		viewDisplayDot1,
+		viewDisplayDot2,
+		viewDisplayDot3,
+		viewDisplayDot4,
+		viewDisplayDot5,
+		viewDisplayDot6,
+		viewDisplayDot7,
+		viewDisplayDot8,
+		viewDisplayDot9,
 	)
 
-	calculator.SetDisplaassetImgActionTops(
+	calculator.SetDisplayImages(
 		assetImgDisplayDigit0,
 		assetImgDisplayDigit1,
 		assetImgDisplayDigit2,
@@ -170,255 +338,6 @@ func main() {
 		assetImgDisplayDigitEmpty,
 		assetImgDisplayDotEmpty,
 	)
-
-	var buttonsRow2VerticalBorderLeft = gui.NewImageView()
-	var buttonsRow2Left = gui.NewImageView()
-	var buttonsRow2Center = gui.NewImageView()
-	var buttonsRow2Right = gui.NewImageView()
-	var buttonsRow2Empty1 = gui.NewImageView()
-	var buttonsRow2X = gui.NewImageView()
-	var buttonsRow2Empty2 = gui.NewImageView()
-	var buttonsRow2B = gui.NewImageView()
-	var buttonsRow2VerticalBorderRight = gui.NewImageView()
-	buttonsRow2VerticalBorderLeft.SetImage(assetImgBorderV)
-	buttonsRow2Left.SetImage(leftImage)
-	buttonsRow2Center.SetImage(centerImage)
-	buttonsRow2Right.SetImage(rightImage)
-	buttonsRow2Empty1.SetImage(assetImgEmpty)
-	buttonsRow2X.SetImage(xImage)
-	buttonsRow2Empty2.SetImage(assetImgEmpty)
-	buttonsRow2B.SetImage(bImage)
-	buttonsRow2VerticalBorderRight.SetImage(assetImgBorderV)
-	layoutButtons2.AddView(buttonsRow2VerticalBorderLeft)
-	layoutButtons2.AddView(buttonsRow2Left)
-	layoutButtons2.AddView(buttonsRow2Center)
-	layoutButtons2.AddView(buttonsRow2Right)
-	layoutButtons2.AddView(buttonsRow2Empty1)
-	layoutButtons2.AddView(buttonsRow2X)
-	layoutButtons2.AddView(buttonsRow2Empty2)
-	layoutButtons2.AddView(buttonsRow2B)
-	layoutButtons2.AddView(buttonsRow2VerticalBorderRight)
-	buttonsRow2X.SetOnClickListener(calculator.ClearOnePosition)
-	buttonsRow2B.SetOnClickListener(calculator.Clear)
-
-	var buttonsRow3VerticalBorderLeft = gui.NewImageView()
-	var buttonsRow3Empty1 = gui.NewImageView()
-	var buttonsRow3Bot = gui.NewImageView()
-	var buttonsRow3B7 = gui.NewImageView()
-	var buttonsRow3B8 = gui.NewImageView()
-	var buttonsRow3B9 = gui.NewImageView()
-	var buttonsRow3A = gui.NewImageView()
-	var buttonsRow3Empty2 = gui.NewImageView()
-	var buttonsRow3VerticalBorderRight = gui.NewImageView()
-	buttonsRow3VerticalBorderLeft.SetImage(assetImgBorderV)
-	buttonsRow3Empty1.SetImage(assetImgEmpty)
-	buttonsRow3Bot.SetImage(botImage)
-	buttonsRow3B7.SetImage(b7Image)
-	buttonsRow3B8.SetImage(b8Image)
-	buttonsRow3B9.SetImage(b9Image)
-	buttonsRow3A.SetImage(aImage)
-	buttonsRow3Empty2.SetImage(assetImgEmpty)
-	buttonsRow3VerticalBorderRight.SetImage(assetImgBorderV)
-	layoutButtons3.AddView(buttonsRow3VerticalBorderLeft)
-	layoutButtons3.AddView(buttonsRow3Empty1)
-	layoutButtons3.AddView(buttonsRow3Bot)
-	layoutButtons3.AddView(buttonsRow3B7)
-	layoutButtons3.AddView(buttonsRow3B8)
-	layoutButtons3.AddView(buttonsRow3B9)
-	layoutButtons3.AddView(buttonsRow3A)
-	layoutButtons3.AddView(buttonsRow3Empty2)
-	layoutButtons3.AddView(buttonsRow3VerticalBorderRight)
-	buttonsRow3B7.SetOnClickListener(func() {
-		calculator.AppendSeven()
-	})
-	buttonsRow3B8.SetOnClickListener(func() {
-		calculator.AppendEight()
-	})
-	buttonsRow3B9.SetOnClickListener(func() {
-		calculator.AppendNine()
-	})
-
-	file, err := os.Open("example/calculator/assets/select.wav")
-	if err != nil {
-		panic(err)
-	}
-	sound, err := wav.DecodeF32(file)
-	form.AddSound(sound)
-
-	buttonsRow3B7.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-	buttonsRow3B8.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-	buttonsRow3B9.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-
-	var buttonsRow4VerticalBorderLeft = gui.NewImageView()
-	var buttonsRow4Empty1 = gui.NewImageView()
-	var buttonsRow4Empty2 = gui.NewImageView()
-	var buttonsRow4B4 = gui.NewImageView()
-	var buttonsRow4B5 = gui.NewImageView()
-	var buttonsRow4B6 = gui.NewImageView()
-	var buttonsRow4Empty3 = gui.NewImageView()
-	var buttonsRow4Empty4 = gui.NewImageView()
-	var buttonsRow4VerticalBorderRight = gui.NewImageView()
-	buttonsRow4VerticalBorderLeft.SetImage(assetImgBorderV)
-	buttonsRow4Empty1.SetImage(assetImgEmpty)
-	buttonsRow4Empty2.SetImage(assetImgEmpty)
-	buttonsRow4B4.SetImage(b4Image)
-	buttonsRow4B5.SetImage(b5Image)
-	buttonsRow4B6.SetImage(b6Image)
-	buttonsRow4Empty3.SetImage(assetImgEmpty)
-	buttonsRow4Empty4.SetImage(assetImgEmpty)
-	buttonsRow4VerticalBorderRight.SetImage(assetImgBorderV)
-	layoutButtons4.AddView(buttonsRow4VerticalBorderLeft)
-	layoutButtons4.AddView(buttonsRow4Empty1)
-	layoutButtons4.AddView(buttonsRow4Empty2)
-	layoutButtons4.AddView(buttonsRow4B4)
-	layoutButtons4.AddView(buttonsRow4B5)
-	layoutButtons4.AddView(buttonsRow4B6)
-	layoutButtons4.AddView(buttonsRow4Empty3)
-	layoutButtons4.AddView(buttonsRow4Empty4)
-	layoutButtons4.AddView(buttonsRow4VerticalBorderRight)
-	buttonsRow4B4.SetOnClickListener(func() {
-		calculator.AppendFour()
-	})
-	buttonsRow4B5.SetOnClickListener(func() {
-		calculator.AppendFive()
-	})
-	buttonsRow4B6.SetOnClickListener(func() {
-		calculator.AppendSix()
-	})
-
-	buttonsRow4B4.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-	buttonsRow4B5.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-	buttonsRow4B6.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-
-	var buttonsRow5VerticalBorderLeft = gui.NewImageView()
-	var buttonsRow5Empty1 = gui.NewImageView()
-	var buttonsRow5Empty2 = gui.NewImageView()
-	var buttonsRow5B1 = gui.NewImageView()
-	var buttonsRow5B2 = gui.NewImageView()
-	var buttonsRow5B3 = gui.NewImageView()
-	var buttonsRow5Empty3 = gui.NewImageView()
-	var buttonsRow5Empty4 = gui.NewImageView()
-	var buttonsRow5VerticalBorderRight = gui.NewImageView()
-	buttonsRow5VerticalBorderLeft.SetImage(assetImgBorderV)
-	buttonsRow5Empty1.SetImage(assetImgEmpty)
-	buttonsRow5Empty2.SetImage(assetImgEmpty)
-	buttonsRow5B1.SetImage(b1Image)
-	buttonsRow5B2.SetImage(b2Image)
-	buttonsRow5B3.SetImage(b3Image)
-	buttonsRow5Empty3.SetImage(assetImgEmpty)
-	buttonsRow5Empty4.SetImage(assetImgEmpty)
-	buttonsRow5VerticalBorderRight.SetImage(assetImgBorderV)
-	layoutButtons5.AddView(buttonsRow5VerticalBorderLeft)
-	layoutButtons5.AddView(buttonsRow5Empty1)
-	layoutButtons5.AddView(buttonsRow5Empty2)
-	layoutButtons5.AddView(buttonsRow5B1)
-	layoutButtons5.AddView(buttonsRow5B2)
-	layoutButtons5.AddView(buttonsRow5B3)
-	layoutButtons5.AddView(buttonsRow5Empty3)
-	layoutButtons5.AddView(buttonsRow5Empty4)
-	layoutButtons5.AddView(buttonsRow5VerticalBorderRight)
-	buttonsRow5B1.SetOnClickListener(func() {
-		calculator.AppendOne()
-	})
-	buttonsRow5B2.SetOnClickListener(func() {
-		calculator.AppendTwo()
-	})
-	buttonsRow5B3.SetOnClickListener(func() {
-		calculator.AppendThree()
-	})
-
-	buttonsRow5B1.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-	buttonsRow5B2.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-	buttonsRow5B3.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-
-	var buttonsRow6VerticalBorderLeft = gui.NewImageView()
-	var buttonsRow6Empty1 = gui.NewImageView()
-	var buttonsRow6Empty2 = gui.NewImageView()
-	var buttonsRow6UnaryMinus = gui.NewImageView()
-	var buttonsRow6B0 = gui.NewImageView()
-	var buttonsRow6Bdot = gui.NewImageView()
-	var buttonsRow6Empty3 = gui.NewImageView()
-	var buttonsRow6Empty4 = gui.NewImageView()
-	var buttonsRow6VerticalBorderRight = gui.NewImageView()
-	buttonsRow6VerticalBorderLeft.SetImage(assetImgBorderV)
-	buttonsRow6Empty1.SetImage(assetImgEmpty)
-	buttonsRow6Empty2.SetImage(assetImgEmpty)
-	buttonsRow6UnaryMinus.SetImage(unaryMinusImage)
-	buttonsRow6B0.SetImage(b0Image)
-	buttonsRow6Bdot.SetImage(dotImage)
-	buttonsRow6Empty3.SetImage(assetImgEmpty)
-	buttonsRow6Empty4.SetImage(assetImgEmpty)
-	buttonsRow6VerticalBorderRight.SetImage(assetImgBorderV)
-	layoutButtons6.AddView(buttonsRow6VerticalBorderLeft)
-	layoutButtons6.AddView(buttonsRow6Empty1)
-	layoutButtons6.AddView(buttonsRow6Empty2)
-	layoutButtons6.AddView(buttonsRow6UnaryMinus)
-	layoutButtons6.AddView(buttonsRow6B0)
-	layoutButtons6.AddView(buttonsRow6Bdot)
-	layoutButtons6.AddView(buttonsRow6Empty3)
-	layoutButtons6.AddView(buttonsRow6Empty4)
-	layoutButtons6.AddView(buttonsRow6VerticalBorderRight)
-	buttonsRow6UnaryMinus.SetOnClickListener(calculator.SwitchSign)
-	buttonsRow6B0.SetOnClickListener(calculator.AppendZero)
-	buttonsRow6Bdot.SetOnClickListener(calculator.AppendDot)
-
-	buttonsRow6B0.SetOnHoverListener(func() {
-		if form.IsPlaying() {
-			return
-		}
-		form.PlaySound()
-	})
-
-	var botHBorder = gui.NewImageView()
-	botHBorder.SetImage(assetImgBorderH)
-	layoutBorderBotH.AddView(botHBorder)
-
-	var form = gui.NewForm("Calculator")
 
 	/*
 		ivImage, _, err := ebitenutil.NewImageFromFile("example/calculator/assets/48x48.png")

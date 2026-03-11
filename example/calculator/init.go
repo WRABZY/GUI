@@ -2,8 +2,10 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/audio/wav"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
@@ -58,6 +60,8 @@ var (
 	assetImgOperatorLeft          *ebiten.Image
 	assetImgOperatorRight         *ebiten.Image
 	assetImgOperatorCenter        *ebiten.Image
+
+	assetSndSelect *wav.Stream
 )
 
 func init() {
@@ -260,6 +264,16 @@ func init() {
 		log.Fatal(err)
 	}
 	assetImgOperatorCenter, _, err = ebitenutil.NewImageFromFile("example/calculator/assets/op_pad/center.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var fileSndSelect *os.File
+	fileSndSelect, err = os.Open("example/calculator/assets/sound/select.wav")
+	if err != nil {
+		log.Fatal(err)
+	}
+	assetSndSelect, err = wav.DecodeF32(fileSndSelect)
 	if err != nil {
 		log.Fatal(err)
 	}
